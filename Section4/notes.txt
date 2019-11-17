@@ -1,0 +1,9 @@
+1. Install virtualenv kalo blm ada
+		 			> pip install virtualenv
+2. Init virtualenv di folder tempat project python
+		 			> virtualenv [foldername]  contoh: virtualenv venv
+3. Aktifkan virtualenv yg sudah diinit di folder project
+		 			> venv\Scripts\activate
+pip install:
+- flask-restful
+- flask-jwt
