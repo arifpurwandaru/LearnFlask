@@ -4,6 +4,8 @@
 		 			> virtualenv [foldername]  contoh: virtualenv venv
 3. Aktifkan virtualenv yg sudah diinit di folder project
 		 			> venv\Scripts\activate
+					 if you get error, delete venv folder and reinstall venv with this
+					> python -m venv [directoryname] : python -m venv venv
 pip install:
 - flask-restful
 - flask-jwt

@@ -7,30 +7,33 @@ from security import authenticate, identity
 app = Flask(__name__)
 api = Api(app)
 
-app.config['JWT_SECRET_KEY']='Walang_Pacul2019'
-jwt = JWT(app, authenticate, identity) # /auth
+app.config['JWT_SECRET_KEY'] = 'Walang_Pacul2019'
+jwt = JWT(app, authenticate, identity)  # /auth
 
 items = []
+
 
 class Item(Resource):
     @jwt_required()
     def get(self, name):
-        item = next(filter(lambda x:x['name'] == name, items), None)
+        item = next(filter(lambda x: x['name'] == name, items), None)
         return {'item': item}, 200 if item else 404
 
-    def post(self,name):
+    def post(self, name):
         data = request.get_json()
-        if next(filter(lambda x:x['name'] == data['name'], items), None):
+        if next(filter(lambda x: x['name'] == data['name'], items), None):
             return {'message': "An Item with name '{}' already exist.".format(name)}, 400
-        item = {'name':data['name'], 'price':data['price']}
+        item = {'name': data['name'], 'price': data['price']}
         items.append(data)
         return item
+
 
 class ItemList(Resource):
     def get(self):
         return {'items': items}
 
+
 api.add_resource(Item, '/item/<string:name>')
 api.add_resource(ItemList, '/items')
 
-app.run(host='192.168.1.9', port=4000)
+app.run(host='172.19.16.66', port=4000)
