@@ -7,7 +7,7 @@ from security import authenticate, identity
 app = Flask(__name__)
 api = Api(app)
 
-app.config['JWT_SECRET_KEY'] = 'Walang_Pacul2019'
+app.config['JWT_SECRET_KEY'] = 'Walang_Pacul2019' # or app.secret_key= 'Walang_Pacul2019'
 jwt = JWT(app, authenticate, identity)  # /auth
 
 items = []
